@@ -19,7 +19,7 @@ class Textbooks {
         db = Firestore.firestore()
     }
         func loadData(completed: @escaping () -> ()) {
-        db.collection("textbooks").addSnapshotListener { (querySnapshot, error) in
+        db.collection("Textbooks").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
                 print("***ERROR: adding the snapshot listener \(error!.localizedDescription)")
                 return completed()

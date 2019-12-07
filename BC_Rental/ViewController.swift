@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("View loaded")
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         textbooks = Textbooks()
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         //saveTestTextbook()
         textbooks.loadData {
             print("Textbooks downloaded")
-//            let downloadedTextbooks = Textbooks.textbookArray
+           // let downloadedTextbooks = Textbooks.textbookArray
             let downloadedTextbooks = Textbooks.self
             //This is just a test to make sure download is working
            // print(downloadedTextbooks[0].author)

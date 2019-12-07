@@ -102,7 +102,7 @@
             <objects>
                 <viewController id="ydQ-EV-2cu" customClass="TextbookDetailViewController" customModule="BC_Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvJ-y2-d28">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ton-HU-e0X">
@@ -215,7 +215,7 @@
                         <outlet property="sellerEmailTextField" destination="UHt-lE-4AR" id="dDT-d3-gXX"/>
                         <outlet property="sellerNameTextField" destination="ABZ-R1-Mdd" id="VxU-Lh-ht9"/>
                         <outlet property="sellerPhoneNumberTextField" destination="H3w-aY-PiQ" id="x45-r1-PoQ"/>
-                        <outlet property="textbookNameField" destination="jXJ-Lj-84Y" id="58u-w9-UZd"/>
+                        <outlet property="textbookTitleTextField" destination="jXJ-Lj-84Y" id="58u-w9-UZd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQH-fa-gDr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,6 +302,6 @@
         <image name="TextbookMeLogo1" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bvk-2I-aRa"/>
+        <segue reference="Lgu-Un-zvF"/>
     </inferredMetricsTieBreakers>
 </document>

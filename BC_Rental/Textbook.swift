@@ -16,7 +16,7 @@ class Textbook: NSObject {
     
     //Textbook information
     //Title, cost, posterId, posterName, author...
-    var title: String
+    var title: String 
     var cost: Double
     var author: String
     var name: String

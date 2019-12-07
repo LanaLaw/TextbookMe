@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseUI
 
 class MyCurrentOffersViewController: UIViewController {
 
@@ -15,25 +17,33 @@ class MyCurrentOffersViewController: UIViewController {
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     
-    
+
   //  var textbooks = ["Let Nobody Turn Us Around", "The Fire Next Time"]
+    //var textbook: Textbook!
     var textbooks: Textbooks!
+    var authUI: FUIAuth!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+//        authUI = FUIAuth.defaultAuthUI()
+//        authUI?.delegate = self
+//
         booksToOfferTableView.delegate = self
         booksToOfferTableView.dataSource = self
+       // booksToOfferTableView.isHidden = true
         // Do any additional setup after loading the view.
         textbooks = Textbooks()
+        self.navigationItem.title = "My Current Offers"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         textbooks.loadData {
+            print("Textbooks downloaded")
             self.booksToOfferTableView.reloadData()
+          
         }
     }
     
@@ -82,7 +92,6 @@ class MyCurrentOffersViewController: UIViewController {
     
     
     @IBAction func addBarButtonPressed(_ sender: Any) {
-        
     }
     
 

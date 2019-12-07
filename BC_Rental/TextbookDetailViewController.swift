@@ -11,7 +11,7 @@ import UIKit
 
 class TextbookDetailViewController: UIViewController {
     
-    @IBOutlet weak var textbookNameField: UITextField!
+    @IBOutlet weak var textbookTitleTextField: UITextField!
     @IBOutlet weak var authorNameTextField: UITextField!
     
     @IBOutlet weak var costTextField: UITextField!
@@ -32,6 +32,8 @@ class TextbookDetailViewController: UIViewController {
         if textbook == nil {
             textbook = Textbook()
         }
+        self.navigationItem.title = "Textbook Info"
+
         
 //        if let textbook = textbook{
 //            textbookNameField.text = textbook
@@ -43,15 +45,19 @@ class TextbookDetailViewController: UIViewController {
 //            self.navigationItem.title = "New To Do Item"
 //        }
         
+        textbookTitleTextField.text = textbook.title
+        authorNameTextField.text = textbook.author
+        costTextField.text = String(Double(textbook.cost))
+        sellerNameTextField.text = textbook.name
+        sellerEmailTextField.text = textbook.email
+        sellerPhoneNumberTextField.text = textbook.phoneNumber
         
         
-        textbookNameField.text = textbook.name
+        
         enableDisableButton()
-        textbookNameField.becomeFirstResponder()
+        textbookTitleTextField.becomeFirstResponder()
 
-        
-        // Do any additional setup after loading the view.
-    }
+        }
     
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -64,8 +70,6 @@ class TextbookDetailViewController: UIViewController {
 //         
 //     }
 //    
-    
-    
     
     
     func leaveViewController() {
@@ -84,7 +88,8 @@ class TextbookDetailViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        textbook.name = textbookNameField.text!
+        textbook.title = textbookTitleTextField.text!
+        textbook.author = authorNameTextField.text!
     }
     
     
@@ -92,7 +97,7 @@ class TextbookDetailViewController: UIViewController {
     func enableDisableButton(){
         
         
-          if let textbookNameFieldCount = textbookNameField.text?.count, textbookNameFieldCount > 0 {
+          if let textbookNameFieldCount = textbookTitleTextField.text?.count, textbookNameFieldCount > 0 {
               saveBarButton.isEnabled = true
           } else {
               saveBarButton.isEnabled = false
@@ -117,7 +122,7 @@ class TextbookDetailViewController: UIViewController {
     
     
     func saveTextbook () {
-        let title = textbookNameField.text ?? ""
+        let title = textbookTitleTextField.text ?? ""
         let costString = costTextField.text ?? "0.0"
         let cost = Double(costString) ?? 0.0
         let name = sellerNameTextField.text ?? ""
