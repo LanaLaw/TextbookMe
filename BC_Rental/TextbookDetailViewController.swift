@@ -51,9 +51,6 @@ class TextbookDetailViewController: UIViewController {
         sellerNameTextField.text = textbook.name
         sellerEmailTextField.text = textbook.email
         sellerPhoneNumberTextField.text = textbook.phoneNumber
-        
-        
-        
         enableDisableButton()
         textbookTitleTextField.becomeFirstResponder()
 
@@ -95,17 +92,12 @@ class TextbookDetailViewController: UIViewController {
     
     
     func enableDisableButton(){
-        
-        
           if let textbookNameFieldCount = textbookTitleTextField.text?.count, textbookNameFieldCount > 0 {
               saveBarButton.isEnabled = true
           } else {
               saveBarButton.isEnabled = false
           }
       }
-    
-    
-    
     
     @IBAction func textbookNameFieldChanged(_ sender: UITextField) {
        enableDisableButton()

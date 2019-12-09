@@ -108,6 +108,8 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     cell.textLabel?.text = textbooks.textbookArray[indexPath.row].title
+//    cell.detailTextLabel?.text = textbooks.cost[indexPath.row]
+
   //  cell.textLabel?.text = species.speciesArray[indexPath.row].name
     return cell
 }

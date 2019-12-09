@@ -11,8 +11,8 @@ import CoreLocation
 import Firebase
  
 class Textbooks {
-     var textbookArray = [Textbook]()
-     var db: Firestore!
+    var textbookArray = [Textbook]()
+    var db: Firestore!
     
     //This is JUST for loading
     init() {

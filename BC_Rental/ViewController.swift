@@ -11,14 +11,20 @@ import Firebase
 import FirebaseUI
 import GoogleSignIn
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchResultsUpdating {
 
     
     @IBOutlet var searchView: UIView!
+    @IBOutlet weak var searchTableView: UITableView!
     
-    var textbooks: Textbooks!
+    
+    var textbooks = Textbooks()
+    var textbook = Textbook()
     var authUI: FUIAuth!
-    
+    var cellIdentifier = "Cell"
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredTextbooks = [Textbook]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View loaded")
@@ -35,6 +41,27 @@ class ViewController: UIViewController {
            // print(downloadedTextbooks[0].author)
             print(downloadedTextbooks.self)
         }
+        
+//        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchTableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor(red:0.58, green:0.88, blue:0.85, alpha:1.0)
+    }
+    
+    
+    //try to call data from firebase and then do private function
+    
+    private func filterTextbooks(for searchText: String) {
+        filteredTextbooks = textbooks.textbookArray.filter { _ in
+            return
+            textbook.title.lowercased().contains(searchText.lowercased())
+            
+        }
+        searchTableView.reloadData()
     }
     
     //look into textfield delegates
@@ -119,4 +146,30 @@ extension ViewController: FUIAuthDelegate{
     }
     
 }
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return textbooks.textbookArray.count
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = textbooks.textbookArray[indexPath.row].title
+
+         let textbooks: Textbooks
+          if searchController.isActive && searchController.searchBar.text != "" {
+            textbook = filteredTextbooks[indexPath.row]
+          }
+         // cell.detailTextLabel?.text = footballer.league
+          return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+            filterTextbooks(for: searchController.searchBar.text ?? "")
+
+    }
+    
+}
+
 
