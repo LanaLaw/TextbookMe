@@ -31,7 +31,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         textbooks = Textbooks()
         // Do any additional setup after loading the view.
         //saveTestTextbook()
-        textbooks.loadData {
+        textbooks.loadData() {
             print("Textbooks downloaded")
             // let downloadedTextbooks = Textbooks.textbookArray
             let downloadedTextbooks = Textbooks.self

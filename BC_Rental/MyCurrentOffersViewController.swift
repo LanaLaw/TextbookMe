@@ -40,7 +40,7 @@ class MyCurrentOffersViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        textbooks.loadData {
+        textbooks.loadData(){
             print("Textbooks downloaded")
             self.booksToOfferTableView.reloadData()
           

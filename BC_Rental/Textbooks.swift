@@ -18,7 +18,7 @@ class Textbooks {
     init() {
         db = Firestore.firestore()
     }
-        func loadData(completed: @escaping () -> ()) {
+    func loadData(completed: @escaping () -> ()) {
         db.collection("Textbooks").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
                 print("***ERROR: adding the snapshot listener \(error!.localizedDescription)")
@@ -29,7 +29,10 @@ class Textbooks {
             for document in querySnapshot!.documents {
                 let textbook = Textbook(dictionary: document.data())
                 textbook.documentId = document.documentID
+               // if textbook.email == user.email
+               // {
                 self.textbookArray.append(textbook)
+               // }
             }
             completed()
         }
