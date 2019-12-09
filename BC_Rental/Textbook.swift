@@ -17,7 +17,7 @@ class Textbook: NSObject {
     //Textbook information
     //Title, cost, posterId, posterName, author...
     var title: String 
-    var cost: Double
+    var cost: Int
     var author: String
     var name: String
     var email: String
@@ -45,7 +45,7 @@ class Textbook: NSObject {
     //Set it so that the title is what the user specifies
     //And the cost is what the user specifies
     init(title: String,
-         cost: Double,
+         cost: Int,
         author: String,
         name: String,
         email: String,
@@ -70,7 +70,7 @@ class Textbook: NSObject {
     convenience override init () {
         self.init(
             title: "",
-            cost: 0.0,
+            cost: 0,
             author: "",
             name: "",
             email: "",
@@ -89,7 +89,7 @@ class Textbook: NSObject {
     //Here's the protocol for turning the JSON back into an object
     convenience init(dictionary:[String:Any]) {
         let title = dictionary["title"] as! String? ?? ""
-        let cost = dictionary ["cost"] as! Double? ?? 0.0
+        let cost = dictionary ["cost"] as! Int? ?? 0
         let author = dictionary["author"] as! String
         let name = dictionary["name"] as! String? ?? ""
         let email = dictionary["email"] as! String? ?? ""
@@ -158,4 +158,19 @@ class Textbook: NSObject {
             print("This shouldn't print")
         }
     }
+    
+    func deleteData(textbook: Textbook, completed: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("Textbooks").document(textbook.documentId).delete() { error in
+            if let error = error {
+                print("😡 ERROR: deleting review documentID \(textbook.documentId) \(error.localizedDescription)")
+                completed(false)
+            } else {
+                    completed(true)
+                }
+            }
+        }
 }
+
+
+

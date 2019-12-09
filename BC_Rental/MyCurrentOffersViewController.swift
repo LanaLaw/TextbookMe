@@ -19,7 +19,7 @@ class MyCurrentOffersViewController: UIViewController {
     
 
   //  var textbooks = ["Let Nobody Turn Us Around", "The Fire Next Time"]
-    //var textbook: Textbook!
+    var textbook: Textbook!
     var textbooks: Textbooks!
     var authUI: FUIAuth!
     
@@ -116,8 +116,22 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          if editingStyle == .delete {
+            let itemToDelete = textbooks.textbookArray[indexPath.row]
+//tableView.indexPath(for: indexPath.row)
             textbooks.textbookArray.remove(at: indexPath.row)
              tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if textbook == nil {
+                textbook = Textbook()
+            }
+            textbook.deleteData(textbook: itemToDelete) { success in
+                if success {
+                   // self.leaveViewController()
+                    print("Success")
+                } else {
+                    print("😡 Delete unsuccessful.")
+                }
+            }
          }
      
      }

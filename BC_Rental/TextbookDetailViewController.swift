@@ -47,7 +47,7 @@ class TextbookDetailViewController: UIViewController {
         
         textbookTitleTextField.text = textbook.title
         authorNameTextField.text = textbook.author
-        costTextField.text = String(Double(textbook.cost))
+        costTextField.text = String(Int(textbook.cost))
         sellerNameTextField.text = textbook.name
         sellerEmailTextField.text = textbook.email
         sellerPhoneNumberTextField.text = textbook.phoneNumber
@@ -116,7 +116,7 @@ class TextbookDetailViewController: UIViewController {
     func saveTextbook () {
         let title = textbookTitleTextField.text ?? ""
         let costString = costTextField.text ?? "0.0"
-        let cost = Double(costString) ?? 0.0
+        let cost = Int(costString) ?? 0
         let name = sellerNameTextField.text ?? ""
         let email = sellerEmailTextField.text ?? ""
         let phoneNumber = sellerPhoneNumberTextField.text ?? ""
@@ -161,7 +161,7 @@ class TextbookDetailViewController: UIViewController {
         let newTextbook = Textbook()
         
         newTextbook.title = title
-        newTextbook.cost = cost
+        newTextbook.cost = Int(cost)
         newTextbook.author = author
         
         newTextbook.saveData(){ (success) in
