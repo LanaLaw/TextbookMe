@@ -13,8 +13,7 @@ import Firebase
 
 class Textbook: NSObject {
     
-    //Textbook information
-    //Title, cost, posterId, posterName, author...
+
     var title: String 
     var cost: Int
     var author: String
@@ -26,8 +25,7 @@ class Textbook: NSObject {
     var documentId: String
     
     
-    //Dictionary representation of the textbook
-    //This is what gets posted to Firebase
+
     var dictionary: [String: Any] {
         return ["title" : title,
                 "cost" : cost,
@@ -40,9 +38,7 @@ class Textbook: NSObject {
         ]
     }
     
-    //When you want to create a new textbook,
-    //Set it so that the title is what the user specifies
-    //And the cost is what the user specifies
+ 
     init(title: String,
          cost: Int,
         author: String,
@@ -65,7 +61,6 @@ class Textbook: NSObject {
     }
     
     
-    //sets up default empty textbook
     convenience override init () {
         self.init(
             title: "",
@@ -80,12 +75,7 @@ class Textbook: NSObject {
         )
     }
     
-    //This is important because when we get the data back from our Firebase Query
-    //We need to convert it back into object form to be understood by the app.
-    
-    //When we get the JSON back from Firebase, it's going to be a dictionary.
-    //When we initialize a textbook object directly from JSON
-    //Here's the protocol for turning the JSON back into an object
+
     convenience init(dictionary:[String:Any]) {
         let title = dictionary["title"] as! String? ?? ""
         let cost = dictionary ["cost"] as! Int? ?? 0

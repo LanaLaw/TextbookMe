@@ -14,7 +14,6 @@ class Textbooks {
     var textbookArray = [Textbook]()
     var db: Firestore!
     
-    //This is JUST for loading
     init() {
         db = Firestore.firestore()
     }
@@ -25,14 +24,10 @@ class Textbooks {
                 return completed()
             }
             self.textbookArray = []
-            //There are querySnapshot!.documents.count documents in the spots snapshot
             for document in querySnapshot!.documents {
                 let textbook = Textbook(dictionary: document.data())
                 textbook.documentId = document.documentID
-               // if textbook.email == user.email
-               // {
                 self.textbookArray.append(textbook)
-               // }
             }
             completed()
         }
@@ -40,29 +35,3 @@ class Textbooks {
 }
 
 
-
-// OLD CODE:
-//
-//class Textbooks {
-//     var textbookArray = [Textbook]()
-//    static var db: Firestore!
-//
-//    //This is JUST for loading
-//    static func loadData(completed: @escaping () -> ()) {
-//        db = Firestore.firestore()
-//        db.collection("Textbooks").addSnapshotListener { (querySnapshot, error) in
-//            guard error == nil else {
-//                print("***ERROR: adding the snapshot listener \(error!.localizedDescription)")
-//                return completed()
-//            }
-//            Textbooks.textbookArray = []
-//            //There are querySnapshot!.documents.count documents in the spots snapshot
-//            for document in querySnapshot!.documents {
-//                let textbook = Textbook(dictionary: document.data())
-//                textbook.documentId = document.documentID
-//                Textbooks.textbookArray.append(textbook)
-//            }
-//            completed()
-//        }
-//    }
-//}

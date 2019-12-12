@@ -61,16 +61,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         }
         searchTableView.reloadData()
     }
-    
-    //look into textfield delegates
-    //there will probably be a default function for "textDidBeginEditing" or "textDidChange"
-    //Make that function call another function that you'll write, called like...
-    //"updateSearchSuggestions" or "updateSearchResults"
-    //You might want a local variable to hold "currentSuggestions" or "currentResults"
-    //as a var dccnanad = [Textbook]()
-    //That function should either update the UI, or call TableViewReloadData, or be in the Tableview
-    //This will make it look like your app is querying in real time even though it isnt
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -144,9 +135,7 @@ extension ViewController: FUIAuthDelegate{
     
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
         let loginViewController = FUIAuthPickerViewController(authUI: authUI)
-        loginViewController.view.backgroundColor = UIColor.white
-        //  loginViewController.view.backgroundColor = UIColor(red:0.58, green:0.88, blue:0.85, alpha:1.0)
-        
+        loginViewController.view.backgroundColor = UIColor.white        
         let marginInsets: CGFloat = 16
         let imageHeight: CGFloat = 225
         let imageY = self.view.center.y - imageHeight

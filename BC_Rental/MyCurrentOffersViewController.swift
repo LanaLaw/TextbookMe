@@ -68,24 +68,7 @@ class MyCurrentOffersViewController: UIViewController {
                }
            }
        }
-    
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//              if (segue.identifier == "ShowTextbook") {
-//                  let destination = segue.destination as! TextbookDetailViewController
-//                  let selectedIndexPath = booksToOfferTableView.indexPathForSelectedRow!
-//                  destination.textbook = TextbookManager.textbookArray[selectedIndexPath.row]
-//              }
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ShowSpot") {
-//            let destination = segue.destination as! SpotDetailViewController
-//            let selectedIndexPath = tableView.indexPathForSelectedRow!
-//            destination.spot = spots.spotArray[selectedIndexPath.row]
-//        }
-//    }
-//
-    
+  
     
     @IBAction func editBarButtonPressed(_ sender: Any) {
         if booksToOfferTableView.isEditing{
@@ -99,9 +82,6 @@ class MyCurrentOffersViewController: UIViewController {
              }
     }
     
-    
-    @IBAction func addBarButtonPressed(_ sender: Any) {
-    }
     
 
 }
@@ -117,16 +97,12 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     cell.textLabel?.text = textbooks.textbookArray[indexPath.row].title
-//    cell.detailTextLabel?.text = textbooks.cost[indexPath.row]
-
-  //  cell.textLabel?.text = species.speciesArray[indexPath.row].name
     return cell
 }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          if editingStyle == .delete {
             let itemToDelete = textbooks.textbookArray[indexPath.row]
-//tableView.indexPath(for: indexPath.row)
             textbooks.textbookArray.remove(at: indexPath.row)
              tableView.deleteRows(at: [indexPath], with: .automatic)
             

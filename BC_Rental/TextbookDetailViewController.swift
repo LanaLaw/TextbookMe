@@ -21,7 +21,6 @@ class TextbookDetailViewController: UIViewController {
     
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
-   //var textbook: String!
     var textbook: Textbook!
     var textbooks: Textbooks!
     
@@ -35,16 +34,6 @@ class TextbookDetailViewController: UIViewController {
         self.navigationItem.title = "Textbook Info"
 
         
-//        if let textbook = textbook{
-//            textbookNameField.text = textbook
-//            self.navigationItem.title = "Edit Textbook Info"
-//        }
-//        if let textbook = textbook {
-//            toDoNoteView.text = toDoNoteItem
-//        } else{
-//            self.navigationItem.title = "New To Do Item"
-//        }
-        
         textbookTitleTextField.text = textbook.title
         authorNameTextField.text = textbook.author
         costTextField.text = String(Int(textbook.cost))
@@ -56,18 +45,7 @@ class TextbookDetailViewController: UIViewController {
 
         }
     
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//         super.viewWillAppear(animated)
-//         
-//        textbooks.loadData(textbook: textbook) {
-//             self.tableView.reloadData()
-//         }
-//         
-//         
-//     }
-//    
-    
+
     
     func leaveViewController() {
         print("Leaving VC")
@@ -144,15 +122,9 @@ class TextbookDetailViewController: UIViewController {
     }
     
     
-    
-    //Rememeber that this is a test function
-    //Write a new function called saveTextbook()
-    //Inside save button pressed, call the func
+
     func saveTestTextbook() {
-        //In your IB action for when the seller saves their post:
-        //Instead of hard coding these variables, get them from the IBOutlets
-        //i.e. let title = titleTextField.text
-        //i.e. let cost = costTextField.text as?? Double
+
         let title = "Swift Book 1.0"
         let cost = 20.0
         let author = "Linda"
@@ -172,15 +144,3 @@ class TextbookDetailViewController: UIViewController {
     
 }
 
-//extension TextbookDetailViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return textbooks.textbookArray.count
-//      //  return reviews.reviewArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCurrentOffersViewController
-//        cell.textbook = textbooks.textbookArray[indexPath.row]
-//        return cell
-//    }
-//}
