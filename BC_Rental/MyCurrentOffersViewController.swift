@@ -29,7 +29,7 @@ class MyCurrentOffersViewController: UIViewController {
         
 //        authUI = FUIAuth.defaultAuthUI()
 //        authUI?.delegate = self
-//
+
         booksToOfferTableView.delegate = self
         booksToOfferTableView.dataSource = self
        // booksToOfferTableView.isHidden = true
@@ -40,7 +40,16 @@ class MyCurrentOffersViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        textbooks.loadData(){
+        let currentUserId = Auth.auth().currentUser!.uid // since we know the user is logged in
+        print("Current User ID", currentUserId)
+        let allTextbooks = Textbooks()
+        allTextbooks.loadData() {
+            if allTextbooks.textbookArray.count > 0 {
+                self.textbooks.textbookArray = allTextbooks.textbookArray.filter {
+                    print($0.postingUserId)
+                    return $0.postingUserId == currentUserId
+                }
+            }
             print("Textbooks downloaded")
             self.booksToOfferTableView.reloadData()
           
